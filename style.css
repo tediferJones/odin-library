@@ -1,3 +1,84 @@
+html,body {
+    margin: 0;
+    /* height: 100%; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 22px;
+}
+
 .hidden {
     display: none;
+}
+
+.header {
+    padding: 24px;
+    background-color: rebeccapurple;
+    color: white;
+    font-size: 36px;
+    font-weight: bolder;
+    height: 10vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addBook {
+    height: calc(48px);
+    width: 192px;
+    background-color: gold;
+    border-radius: 24px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#container {
+    height: 360px;
+    width: 420px;
+
+    background-color: rebeccapurple;
+    border-radius: 18px;
+    color: white;
+/*
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+*/
+    position: fixed;
+    top: 45vh;
+    left: 45vw;
+}
+
+form {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.submitBtn {
+    height: 60px;
+    width: 420px;
+    background-color: gold;
+    border-end-end-radius: 18px;
+    border-end-start-radius: 18px;
+}
+
+.content {
+    background-color: rgb(35, 35, 45);
+    height: 100%;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-rows: repeat(3, 240px);
+    gap: 48px;
+}
+
+.card {
+    height: 240px;
+    width: 240px;
+    background-color: white;
+    border-style: solid;
+    border-radius: 12px;
 }
