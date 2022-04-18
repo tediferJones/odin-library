@@ -14,30 +14,33 @@
     </div>
 
     <div id="container" class="hidden">
-        <form>
+        <form class="myForm">
             <div class="formInput">
                 <label for="title">Book Title: </label>
-                <input type="text" id="title" required>
+                <input type="text" id="title" name="title" placeholder="Moby Dick">
             </div>
 
             <div class="formInput">
                 <label for="author">Author: </label>
-                <input type="text" id="author" required>
+                <input type="text" id="author" name="author" placeholder="Herman Melville">
             </div>
 
             <div class="formInput">
                 <label for="pages">Number of Pages: </label>
-                <input type="number" id="pages" required>
+                <input type="number" id="pages" name="pages" placeholder="427">
             </div>
 
             <div class="formInput">
-                <label for="read">Read?</label>
-                <input type="text" id="read" required>
+                <label for="read">Have you read this Book?</label>
             </div>
 
-            <!-- <input type="button" id="submitBtn"> -->
+            <div class="formInput">
+                <label for="false">False</label>
+                <input type="radio" id="false" value="false" name="read">
 
-            <!-- <button id="stupidBtn">stupidBtn</button> -->
+                <label for="true">True</label>
+                <input type="radio" id="true" value="true" name="read">
+            </div>
         </form>
     </div>
 

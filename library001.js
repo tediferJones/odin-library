@@ -6,140 +6,99 @@ function Book(title, author, pages, read) {
     this.read = read
 
     this.info = function() {
-        return `${title} by ${author}, ${pages} pages, read: ${read}`
+        return `${this.title} by ${this.author}, ${this.pages} pages, read: ${this.read}`
     }
 }
 
 function addBookToLibrary(title, author, pages, read) {
-    tempBook = new Book(title, author, pages, read)
-    library.push(tempBook)
-    //displayBook(tempBook)
+    library.push(new Book(title, author, pages, read))
     displayEachBook001()
 }
 
 function displayEachBook001() {
-    //removeOldCards()
     document.querySelector('.content').innerHTML = ''    
     for (let i in library) {
         let card = document.createElement('div')
         card.classList.add('card')
-        card.innerHTML = library[i].info()
+
+        let cardInfo = document.createElement('div')
+        cardInfo.classList.add('cardInfo')
+        cardInfo.innerHTML = library[i].info()
+
+        let cardOptions = document.createElement('div')
+        cardOptions.classList.add('cardOptions')
 
         let del = document.createElement('button')
         del.classList.add('deleteBtn')
         del.innerHTML = 'Remove Book'
         del.addEventListener('click', () => {
-            /* this button should activate a function that takes the book 
-            object as an argument, and removes that object from the library array */
-            /* check if objects can be compared in an example script*/
-            console.log(library[i])
+            removeBook(library[i])
         })
-        card.appendChild(del)
 
-        myContent.appendChild(card)
+        let toggleRead = document.createElement('button')
+        toggleRead.classList.add('toggleReadBtn')
+        toggleRead.innerHTML = 'Toggle Read Status'
+        toggleRead.addEventListener('click', () => {
+            toggleReadStatus(library[i])
+        })
+
+        cardOptions.appendChild(toggleRead)
+        cardOptions.appendChild(del)
+
+        card.appendChild(cardInfo)
+        card.appendChild(cardOptions)
+
+        document.querySelector('.content').appendChild(card)
     }
 }
-
-// function displayBook(book) {
-//     let card = document.createElement('div')
-//     card.classList.add('card')
-//     card.innerHTML = book.info()
-//     myContent.appendChild(card)
-// }
 
 function submitter() {
     title = document.querySelector("#title").value
     author = document.querySelector("#author").value
     pages = document.querySelector('#pages').value
-    read = document.querySelector('#read').value
+    read = document.querySelector("form").read.value
 
-    //checkInputs()
     addBookToLibrary(title, author, pages, read)
     myContainer.classList.add('hidden')
-    console.log(library)
-    
-    clearInputs()
+    document.querySelector("form").reset()
 }
 
-function clearInputs() {
-    const options = ['title', 'author', 'pages', 'read']
-    for (let i in options) {
-        document.querySelector(`#${options[i]}`).value = ''
+function removeBook(book) {
+    library.splice(library.indexOf(book), 1)
+    displayEachBook001()
+}
+
+function toggleReadStatus(book) {
+    if (book.read == "false") {
+        book.read = "true"
+    } else if (book.read == "true") {
+        book.read = "false"
     }
+    displayEachBook001()
 }
 
-let library = []
-
-const myDoc = document.querySelector('body')
-//const myForm = document.querySelector('form')
-const myHeader = document.querySelector('.header')
 const myContainer = document.querySelector('#container')
-const myContent = document.querySelector('.content')
 
 const addBook = document.createElement('button')
 addBook.classList.add('addBook')
 addBook.innerHTML = 'NEW BOOK'
 addBook.addEventListener("click", () => {
-    myContainer.classList.remove("hidden")
+    console.log(myContainer.classList)
+    myContainer.classList.toggle("hidden")
 })
-myHeader.append(addBook)
+document.querySelector('.header').append(addBook)
 
 const submitBtn = document.createElement('button')
 submitBtn.classList.add('submitBtn')
-submitBtn.innerHTML = 'SUBMIT BTN'
+submitBtn.innerHTML = 'Add to Library'
 submitBtn.addEventListener("click", () => {
     submitter()
 })
 myContainer.appendChild(submitBtn)
 
+let library = []
 
-const deleteBtn = document.createElement('button')
-
-
-addBookToLibrary("Richard", "richard", 69, false)
-addBookToLibrary("someBook", 'someAuthor', 7, true)
-addBookToLibrary("Book", "Author", 7, "nope")
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-// addBookToLibrary("Richard", "richard", 69, false)
-// addBookToLibrary("someBook", 'someAuthor', 7, true)
-// addBookToLibrary("Book", "Author", 7, "nope")
-
-//console.log('################# END OF PROGRAM ##############')
-
-// const test = document.createElement('button')
-// test.innerHTML = 'TEST'
-// test.addEventListener('click', () => {
-//     removeOldCards()
-// })
-// myDoc.appendChild(test)
+addBookToLibrary("The Deluge", "Henryk Sienkiewicz", 895, "false")
+addBookToLibrary("The Godfather", "Mario Puzzo", 448, "true")
+addBookToLibrary("The Dogs of War", "Frederick Forsyth", 408, "true")
+addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 256, "false")

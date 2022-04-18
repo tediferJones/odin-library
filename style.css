@@ -1,6 +1,5 @@
 html,body {
     margin: 0;
-    /* height: 100%; */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 22px;
 }
@@ -23,7 +22,7 @@ html,body {
 }
 
 .addBook {
-    height: calc(48px);
+    height: 48px;
     width: 192px;
     background-color: gold;
     border-radius: 24px;
@@ -38,14 +37,10 @@ html,body {
     background-color: rebeccapurple;
     border-radius: 18px;
     color: white;
-/*
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-*/
+
     position: fixed;
-    top: 45vh;
-    left: 45vw;
+    top: calc(50vh - 180px);
+    left: calc(50vw - 210px);
 }
 
 form {
@@ -63,6 +58,8 @@ form {
     background-color: gold;
     border-end-end-radius: 18px;
     border-end-start-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .content {
@@ -79,6 +76,37 @@ form {
     height: 240px;
     width: 240px;
     background-color: white;
-    border-style: solid;
     border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cardInfo {
+    margin: 24px;
+}
+
+.cardOptions {
+    display: flex;
+    height: 48px;
+}
+
+.toggleReadBtn {
+    background-color: #16a34a;
+    border-bottom-left-radius: 12px;
+}
+
+.deleteBtn {
+    background-color: #e11d48;
+    border-bottom-right-radius: 12px;
+}
+
+.toggleReadBtn,
+.deleteBtn {
+    flex-grow: 1;
+    border-style: none;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
 }
