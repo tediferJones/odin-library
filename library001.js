@@ -1,17 +1,19 @@
 
-function Book(title, author, pages, read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
+class aBook {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+    }
 
-    this.info = function() {
+    info() {
         return `${this.title} by ${this.author}, ${this.pages} pages, read: ${this.read}`
     }
 }
 
 function addBookToLibrary(title, author, pages, read) {
-    library.push(new Book(title, author, pages, read))
+    library.push(new aBook(title, author, pages, read))
     displayEachBook001()
 }
 
