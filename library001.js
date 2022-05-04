@@ -55,14 +55,19 @@ function displayEachBook001() {
 }
 
 function submitter() {
-    title = document.querySelector("#title").value
-    author = document.querySelector("#author").value
-    pages = document.querySelector('#pages').value
-    read = document.querySelector("form").read.value
+    checkTitle = document.querySelector('#title').validity.valueMissing
+    checkAuthor = document.querySelector('#author').validity.valueMissing
+    checkPages = document.querySelector('#pages').validity.valueMissing
+    if (!(checkTitle || checkAuthor || checkPages)) {
+        title = document.querySelector("#title").value
+        author = document.querySelector("#author").value
+        pages = document.querySelector('#pages').value
+        read = document.querySelector("form").read.value
 
-    addBookToLibrary(title, author, pages, read)
-    myContainer.classList.add('hidden')
-    document.querySelector("form").reset()
+        addBookToLibrary(title, author, pages, read)
+        myContainer.classList.add('hidden')
+        document.querySelector("form").reset()
+    }
 }
 
 function removeBook(book) {
@@ -85,7 +90,6 @@ const addBook = document.createElement('button')
 addBook.classList.add('addBook')
 addBook.innerHTML = 'NEW BOOK'
 addBook.addEventListener("click", () => {
-    console.log(myContainer.classList)
     myContainer.classList.toggle("hidden")
 })
 document.querySelector('.header').append(addBook)
